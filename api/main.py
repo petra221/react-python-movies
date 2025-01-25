@@ -11,7 +11,7 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="../ui/build/static", check_dir=False), name="static")
 
 
-@app.get("/")
+@app.get("/")  ##chcemy aby zwrocilo aplikacje frontendowa
 def serve_react_app():
     return FileResponse("../ui/build/index.html")
 
