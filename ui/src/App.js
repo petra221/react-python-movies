@@ -13,7 +13,7 @@ function App() {
     //     setAddingMovie(false);
     // }
     // async zapytania ktore pozwala na event driven - czeka ale robi cos na reakcji
-                                                    //// testuj ponizej z http://localhost:8000/movies << zobacz bledy | CORS error
+                                                    //// testuj ponizej z http://localhost:8000/movies << zobacz bledy | CORS error | czyli musi byc 8000 -> 3000 -> przegladarka
     async function handleAddMovie(movie) {          ///// f12 dodaj - zadanie idzie do 3000/movies czyli do frontendu! 30
         const response = await fetch('/movies', {   //fetch globalna w przegladarkach // andpoint movies
           method: 'POST',                           // tworzymy film wiec metoda post
