@@ -1,5 +1,5 @@
 import './App.css';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import "milligram";
 import MovieForm from "./MovieForm";
 import MoviesList from "./MoviesList";
@@ -21,11 +21,28 @@ function App() {
           headers: { 'Content-Type': 'application/json' } // dodajemy temu ze to jest jsonem aby py sobie z tym poradzil / t ojest pospolita metoda wiec frontend nie determinuje co jest nabackendzie i na odwrot
         });
       
+
         if (response.ok) {  //server odpowiada z responsem na ok, // moment przerwy w await mozna wstawic animacje czekania/ladowania
           setMovies([...movies, movie]);
           setAddingMovie(false);
         }
       }
+
+// hook use effect <= udeEffect / read / zrob testy bez ponizszego hooka na f12 na chromie
+//najpierw powinien byc stan a pozniej hooki ale to dobre praktyki. najwazniejsze aby deklaracje i resszta byly przed return :)
+// przeczytaj o double-invoking ze strony zadania! dlaczego renderuje to 2 razy...
+
+      useEffect(() => {
+        const fetchMovies = async () => {
+            const response = await fetch(`/movies`);
+            if (response.ok) {
+                const movies = await response.json();
+                setMovies(movies);
+            }
+        };
+        fetchMovies(); // funkcja wywpołana od razu po deklaracji
+    }, []);  /// ta tablica - za kazdym razem jak zmieni sie identyfikator komponentu i tu bedzie stan komponentu wiec jesli stan sie zmieni to wtedy wyrenderuje. wiec pusta tablica jest po to aby sprawdzac zmiane stanu.. poczytaj i wspomoz sie chatemgpt
+    
 
     return (
         <div className="container">
