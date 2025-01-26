@@ -4,9 +4,17 @@ import "milligram";
 import MovieForm from "./MovieForm";
 import MoviesList from "./MoviesList";
 
+// import ActorForm from "./ActorForm";
+// import ActorList from "./ActorList";
+
 function App() {
     const [movies, setMovies] = useState([]);
     const [addingMovie, setAddingMovie] = useState(false);
+
+
+
+    // const [actors, setActors] = useState{[]};
+
 
     // const [deletingMovie, setDeletemovie] = usestate();  <<-- to jest zle. wywalic
 
@@ -74,6 +82,26 @@ useEffect(() => {
                              buttonLabel="Add a movie"
                 />
                 : <button onClick={() => setAddingMovie(true)}>Add a movie</button>}
+
+          {/* <h1>My favourite Actors</h1>
+            {movies.length === 0
+            ? <p>No movies yet. Maybe add something?</p>
+            : <MoviesList movies={movies}
+                          onDeleteMovie={handleDeleteMovie} // tuu byl kod: (movie) => setMovies(movies.filter(m => m !== movie))wewnatrz {}
+                />} */}
+
+
+
+
+
+
+          {/* {actors.length === 0
+          ? <ActorsForm onActorSubmit={handleAddActor}
+                        buttonLabel="Add Actor/s" 
+          :  <button /> */}
+
+
+
 {/* 
             {deletingMovie
                 ? <MovieForm onMovie ={handleDeleteMovie}

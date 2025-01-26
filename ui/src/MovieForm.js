@@ -18,6 +18,10 @@ export default function MovieForm(props) {
         setDescription('');
     }
 
+
+
+
+
     return <form onSubmit={addMovie}>
         <h2>Add movie</h2>
         <div>
@@ -37,5 +41,7 @@ export default function MovieForm(props) {
             <textarea value={description} onChange={(event) => setDescription(event.target.value)}/>
         </div>
         <button>{props.buttonLabel || 'Submit'}</button>
+        
+
     </form>;
 }
